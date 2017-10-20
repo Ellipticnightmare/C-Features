@@ -6,8 +6,9 @@ namespace Asteroids
 {
     public class Movement : MonoBehaviour
     {
-        public float accelerate = 5f;
-        public float rotationSpeed = 120f;
+        public float accelerate = 50f;
+        public float rotationSpeed = 360f;
+        public float dashSpeed = 10f;
 
         private Rigidbody2D rigid;
 
@@ -23,16 +24,28 @@ namespace Asteroids
             rigid.AddForce(transform.up * inputV * accelerate);
         }
 
+        void Dash()
+        {
+            if(Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                rigid.AddForce(transform.up * dashSpeed, ForceMode2D.Impulse);
+            }
+            
+        }
         void Rotate()
         {
             float inputH = Input.GetAxis("Horizontal");
             transform.Rotate(Vector3.back, rotationSpeed * inputH * Time.deltaTime);
         }
+
         // Update is called once per frame
         void Update()
         {
-            Accelerate();
+            //Accelerate();
+            Dash();
             Rotate();
         }
+
+
     }
 }
