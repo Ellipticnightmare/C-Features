@@ -20,8 +20,8 @@ namespace Asteroids
 
         void Accelerate()
         {
-            float inputV = Input.GetAxis("Vertical");
-            rigid.AddForce(transform.up * inputV * accelerate);
+            //float inputV = Input.GetAxis("Vertical");
+            rigid.AddForce(transform.up * accelerate);
         }
 
         void Dash()
@@ -41,7 +41,7 @@ namespace Asteroids
         // Update is called once per frame
         void Update()
         {
-            //Accelerate();
+            Accelerate();
             Dash();
             Rotate();
         }
