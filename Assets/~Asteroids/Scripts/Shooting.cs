@@ -24,7 +24,7 @@ namespace Asteroids
             shootTimer += Time.deltaTime;
             if (shootTimer >= shootRate)
             {
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.DownArrow))
                 {
                     Shoot();
                     shootTimer = 0f;

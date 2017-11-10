@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class RespawnOnContact : MonoBehaviour
 {
+    public List<string> triggerTags = new List<string>() {
+        "Manny",
+        "Death"
+    };
+
     private Vector3 spawnPos;
     // Use this for initialization
     void Start()
@@ -13,6 +18,9 @@ public class RespawnOnContact : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        transform.position = spawnPos;
+        if (triggerTags.Contains(other.tag))
+        {
+            transform.position = spawnPos;
+        }
     }
 }

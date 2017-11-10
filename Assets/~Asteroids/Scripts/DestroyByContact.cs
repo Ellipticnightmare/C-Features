@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class DestroyByContact : MonoBehaviour
 {
+    public string triggerTag = "Manny";
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(gameObject);
+        if (other.tag == triggerTag)
+        {
+            Destroy(gameObject);
+            Destroy(other.gameObject);
+        }
     }
 }
